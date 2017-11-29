@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1= title
+    p D'ici vous pouvez modifier les #{title.toLowerCase()} sélectionné, le supprimer ou bien en ajouter un nouveau en modifiant les zones de textes.
+    div
+        form(name="info-movie", method="post", action="/information/modify")
+            div.input
+                input(type="hidden", name="movieID", value="#{movie._id}")
+            div.input
+                span.label Titre du film
+                // Text field that has for value the title of the film.
+                input(type="text", name="movieTitle", id="movieTitle", value="#{movie.title}")
+            div.input
+                span.label Type de film
+                // Text field that has for value the type of the film.
+                input(type="text", name="movieType", id="movieType", value="#{movie.type}")
+            div.input
+                span.label Année de sortie
+                // Text field that has for value the year of release of the film.
+                input(type="number", name="movieRelease", id="movieRelease", value="#{movie.releaseYear}")
+            div.input
+                span.label Réalisateur
+                // Text field that has for value the director of the film.
+                input(type="text", name="movieDirector", id="movieDirector", value="#{movie.director}")
+            div.actions
+                input(type="submit", name="btnModify", value="Modifier")
+                input(type="submit", name="btnAdd", value="Ajouter", formaction="/information/add")
+                input(type="submit", name="btnDelete", value="Supprimer", formaction="/information/delete")

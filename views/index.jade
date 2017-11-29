@@ -2,4 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Sélectionnez un #{title.toLowerCase()} parmis la liste suivante
+  div
+      form(name="search-movie", method="post", action="information")
+          select(name="movie")
+            each movie in movies
+                option(value="#{movie._id}") #{movie.title}
+          div.actions
+              input(type="submit", name="find", value="Voir les informations")
